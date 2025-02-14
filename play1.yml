@@ -1,0 +1,37 @@
+---
+- name: "Makes EVIDGE available to the local network"
+  hosts: jws
+  collections:
+    - middleware_automation.jws
+  vars:
+    edvige_home: "{{ jws_home }}/webapps/edvige/"
+    jws_systemd_enabled: True
+    jws_java_version: 17
+  roles:
+    - jws
+  post_tasks:
+
+    - name: "Ensure EDVIGE folder exists on target"
+      ansible.builtin.file:
+        path: "{{ edvige_home }}"
+        state: directory
+
+    - name: "Deploy EDVIGE"
+      ansible.builtin.copy:
+        src: edvige.txt
+        dest: "{{ edvige_home }}"
+        owner: "{{ jws_user }}"
+        group: "{{ jws_group }}"
+
+    - name: "Delete previous test results - if existing"
+      changed_when: false
+      ansible.builtin.file:
+        path: "/tmp/res-{{ ansible_nodename }}.txt"
+        state: absent
+
+    - name: "Checks that deployment was successful"
+      changed_when: false
+      ansible.builtin.get_url:
+        url: "http://localhost:8080/edvige/edvige.txt"
+        dest: "/tmp/res-{{ ansible_nodename }}.txt"
+        checksum: md5:2685d5512691f5b246a090acee06e4c4.

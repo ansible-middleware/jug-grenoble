@@ -1,0 +1,25 @@
+---
+- name: "Ensure all ING target hosts are registered in RHN"
+  hosts: all
+  gather_facts: no
+  become: yes
+  vars_files:
+    - creds.yml
+  collections:
+    - community.general
+  tasks:
+    - name: "Register as user ({{ rhn_subs_username }}) with password ({{ rhn_password }}) and auto-subscribe to available content."
+      community.general.redhat_subscription:
+        state: present
+        username: "{{ rhn_subs_username }}"
+        password: "{{ rhn_subs_password }}"
+        auto_attach: true
+
+    - name: "Ensure required tools on target are installed"
+      ansible.builtin.package:
+        name: "{{ tool }}"
+        state: present
+      loop:
+        - vim-enhanced
+      loop_control:
+        loop_var: tool
