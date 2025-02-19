@@ -1,0 +1,26 @@
+---
+# Deploy EDVIGE as a webapp using Postgresql as a datasource
+- name: "Deploy EDVIGE app and associated databases"
+  hosts: wildfly
+  vars:
+    postgres_driver_version: 9.4.1212
+    jdbc_drivers:
+      - { version: "{{ postgres_driver_version }}", name: 'org.postgresql', jar_file: "postgresql-{{ postgres_driver_version }}.jar", url: "https://repo.maven.apache.org/maven2/org/postgresql/postgresql/{{ postgres_driver_version }}/postgresql-{{ postgres_driver_version }}.jar" }
+  collections:
+    - middleware_automation.wildfly
+  roles:
+    - pgsql
+    - wildfly_install
+    - wildfly_systemd
+  tasks:
+    - name: Install two JDBC drivers with wildfly_driver role
+      ansible.builtin.include_role:
+        name: wildfly_driver
+      when: jdbc_drivers is defined and jdbc_drivers | length > 0
+      vars:
+        wildfly_driver_module_name: "{{ item.name }}"
+        wildfly_driver_version: "{{ item.version }}"
+        wildfly_driver_jar_filename: "{{ item.jar_file }}"
+        wildfly_driver_jar_url: "{{ item.url }}"
+      loop: "{{ jdbc_drivers }}"
+
