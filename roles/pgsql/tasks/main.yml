@@ -1,0 +1,26 @@
+---
+- name: "Install packages"
+  ansible.builtin.package:
+    name: postgresql-server
+    state: present
+  notify: "Start Postgresql"
+  register: res
+
+- name: "Find out if PostgreSQL is initialized"
+  ansible.builtin.stat:
+    path: "/var/lib/pgsql/data/pg_hba.conf"
+  register: postgres_data
+
+- name: "Initialize PostgreSQL"
+  ansible.builtin.shell: "postgresql-setup initdb"
+  when: not postgres_data.stat.exists
+
+- name: "Flush handlers if package was installed"
+  ansible.builtin.meta: flush_handlers
+  when:
+    - res is defined and res.changed is defined and res.changed
+
+- name: "Ensure required python deps for PGSQL handling is installed"
+  ansible.builtin.package:
+    name: python3-psycopg2
+    state: present
