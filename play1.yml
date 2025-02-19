@@ -1,5 +1,6 @@
 ---
-- name: "Makes EVIDGE available to the local network"
+# Deploy EDVIGE on a tomcat (jws) instance for local use
+- name: "Makes EDVIGE available to the local network"
   hosts: jws
   collections:
     - middleware_automation.jws
@@ -7,6 +8,7 @@
     edvige_home: "{{ jws_home }}/webapps/edvige/"
     jws_systemd_enabled: True
     jws_java_version: 17
+    jws_listen_http_port: 8600
   roles:
     - jws
   post_tasks:
@@ -32,6 +34,6 @@
     - name: "Checks that deployment was successful"
       changed_when: false
       ansible.builtin.get_url:
-        url: "http://localhost:8080/edvige/edvige.txt"
+        url: "http://localhost:{{ jws_listen_http_port }}/edvige/edvige.txt"
         dest: "/tmp/res-{{ ansible_nodename }}.txt"
         checksum: md5:2685d5512691f5b246a090acee06e4c4.
