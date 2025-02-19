@@ -1,0 +1,24 @@
+---
+# Deploy EDVIGE as a webapp using Postgresql as a datasource
+- name: "Deploy EDVIGE app and associated databases"
+  hosts: infinispan
+  collections:
+    - middleware_automation.infinispan
+  vars:
+    infinispan_password: "remembertochangeme"
+  roles:
+    - role: infinispan
+      infinispan_supervisor_password: "{{ infinispan_password }}"
+      infinispan_jgroups_discovery: PING
+      infinispan_users: []
+    - role: infinispan_cache
+      infinispan_deployer_user: "supervisor"
+      infinispan_deployer_password: "{{ infinispan_password }}"
+      infinispan_cache_xml: >
+        <local-cache name="testcache" statistics="true">
+          <encoding media-type="application/x-protostream"/>
+        </local-cache>
+  pre_tasks:
+    - ansible.builtin.package:
+        name: python3-lxml
+        state: present
