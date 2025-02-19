@@ -1,0 +1,31 @@
+’Exploitation documentaire et valorisation de l'information générale (abrégé EDVIGE) est un projet de fichier de police informatisé créé en juin 2008 et qui a été retiré en novembre de la même année.
+Historique
+
+Créé par le décret 2008-632 du 27 juin 2008 par le ministère français de l'Intérieur1 sous le gouvernement François Fillon, et paru au Journal officiel n°152 du 1er juillet 2008 2, EDVIGE, apparaît dans le cadre de la fusion des Renseignements généraux et de la Direction de la surveillance du territoire pour former la nouvelle Direction centrale du renseignement intérieur : il consiste à intégrer, dans les fiches des anciens Renseignements généraux3, des critères utilisés par le fichier CRISTINA de la DST dans l'optique de l'antiterrorisme et du contre-espionnage. L'annonce de sa mise en place soulève un tollé dans une partie de l'opinion publique française4,5.
+
+Le comité des droits de l'homme de l'ONU souligne dans un rapport rendu public le 22 juillet 2008 que ce fichier contrevient au Pacte international relatif aux droits civils et politiques, entré en vigueur en 19766.
+
+Le Conseil d'État, devant lequel sont formés plusieurs recours7,8, devait rendre sa décision concernant la légalité du fichier fin décembre 20089. Les associations signataires de la pétition « Non à EDVIGE » s'opposent à tout aménagement à la marge du dispositif et réclament l'abrogation pure et simple du décret et l'abandon du projet10. Un nouveau décret est annoncé en préparation en septembre 200811,12. Il est supposé supprimer quelques points très controversés du projet initial13,14. Ce nouveau projet est soumis à la CNIL pour avis le 19 septembre 200815. Le nouveau fichier est baptisé EDVIRSP (abréviation de « Exploitation documentaire et valorisation de l'information relative à la sécurité publique)16 et suscite la même opposition17. EDVIRSP doit être intégré au projet de loi LOPPSI préparé en juin 2009 par la ministre de l'Intérieur Michèle Alliot-Marie18.
+
+Le décret instituant le fichier EDVIGE est finalement retiré le 20 novembre 200819,20.
+
+Le fichier EDVIGE devait recenser les personnes « ayant sollicité, exercé ou exerçant un mandat politique, syndical ou économique ou qui jouent un rôle institutionnel, économique, social ou religieux significatif ». Les données n'auraient pu être collectées que pour des personnes « dont l'activité individuelle ou collective » peut « porter atteinte à la sécurité publique » et pour celles « entretenant ou ayant entretenu des relations non fortuites avec elles ». Il aurait visé également « des personnes travaillant dans des secteurs ou des domaines sensibles » et qui font à ce titre l'objet d'enquêtes administratives21.
+Caractéristiques
+
+Le fichier EDVIGE était destiné à permettre à la police « de centraliser et d'analyser les informations relatives aux personnes physiques ou morales ayant sollicité, exercé ou exerçant un mandat politique, syndical ou économique ou qui jouent un rôle institutionnel, économique, social ou religieux significatif, sous condition que ces informations soient nécessaires au Gouvernement ou à ses représentants pour l'exercice de leurs responsabilités». Ces informations auraient pu être « des données à caractère personnel qui font apparaître, directement ou indirectement, les origines raciales ou ethniques, les opinions politiques, philosophiques ou religieuses ou l'appartenance syndicale des personnes, ou qui sont relatives à la santé ou à la vie sexuelle de celles-ci ». Les destinataires de ces informations, « dans la limite du besoin d'en connaître », auraient été « tout agent d'un service de la police nationale ou de la gendarmerie nationale ».
+
+Ce fichier comprenait les informations suivantes1 :
+
+    informations ayant trait à l'état civil et à la profession ;
+    adresses physiques, numéros de téléphone et adresses électroniques ;
+    signes physiques particuliers et objectifs, photographies et comportement ;
+    titres d'identité ;
+    immatriculation des véhicules ;
+    informations fiscales et patrimoniales ;
+    déplacements et antécédents judiciaires ;
+    motif de l'enregistrement des données ;
+    données relatives à l'environnement de la personne, notamment à celles entretenant ou ayant entretenu des relations directes et non fortuites avec elle.
+
+En outre, le traitement pouvait enregistrer des données à caractère personnel de la nature de celles mentionnées à l'article 8 de la loi du 6 janvier 197822. Il s’agissait des données faisant apparaître, directement ou indirectement, les origines raciales ou ethniques, les opinions politiques, philosophiques ou religieuses ou l'appartenance syndicale des personnes, ou celles relatives à la santé ou à la vie sexuelle de celles-ci.
+
+Certaines garanties ont été mises en avant : les données autres que celles relatives aux opinions politiques, philosophiques ou religieuses, ou à l'appartenance syndicale ne pouvaient être enregistrées au titre de la finalité de l'article 1er que de manière exceptionnelle, il était interdit de sélectionner une catégorie particulière de personnes à partir de ces seules informations, le traitement ne comportait pas de dispositif de reconnaissance faciale à partir de la photographie 1.

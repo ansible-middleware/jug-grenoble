@@ -1,5 +1,5 @@
 ---
-- name: "Ensure all ING target hosts are registered in RHN"
+- name: "Ensure all target hosts are registered in RHN"
   hosts: all
   gather_facts: no
   become: yes
