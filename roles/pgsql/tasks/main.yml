@@ -24,3 +24,28 @@
   ansible.builtin.package:
     name: python3-psycopg2
     state: present
+
+- name: "Create app database"
+  community.general.postgresql_db:
+    state: present
+    name: "{{ postgresql_db_name }}"
+  become: yes
+  become_user: postgres
+
+- name: "Create db user"
+  community.general.postgresql_user:
+    state: present
+    name: "{{ postgresql_db_user }}"
+    password: "{{ postgresql_db_password }}"
+  become: yes
+  become_user: postgres
+
+- name: "Grant db user access to app db"
+  community.general.postgresql_privs:
+    type: database
+    database: "{{ postgresql_db_name }}"
+    roles: "{{ postgresql_db_user }}"
+    grant_option: no
+    privs: all
+  become: yes
+  become_user: postgres
