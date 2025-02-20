@@ -1,0 +1,25 @@
+---
+- name: "Ensure EDVIGE folder exists on target"
+  ansible.builtin.file:
+    path: "{{ edvige_home }}"
+    state: directory
+
+- name: "Deploy EDVIGE"
+  ansible.builtin.copy:
+    src: edvige.txt
+    dest: "{{ edvige_home }}"
+    owner: "{{ jws_user }}"
+    group: "{{ jws_group }}"
+
+- name: "Delete previous test results - if existing"
+  changed_when: false
+  ansible.builtin.file:
+    path: "/tmp/res-{{ ansible_nodename }}.txt"
+    state: absent
+
+- name: "Checks that deployment was successful"
+  changed_when: false
+  ansible.builtin.get_url:
+    url: "http://localhost:{{ jws_listen_http_port }}/edvige/edvige.txt"
+    dest: "/tmp/res-{{ ansible_nodename }}.txt"
+    checksum: md5:2533713501484bb67f29e242441fe71c.
