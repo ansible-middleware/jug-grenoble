@@ -16,12 +16,23 @@
           name: 'org.postgresql', 
           jar_file: "postgresql-{{ postgres_driver_version }}.jar", 
           url: "https://repo.maven.apache.org/maven2/org/postgresql/postgresql/{{ postgres_driver_version }}/postgresql-{{ postgres_driver_version }}.jar" }
+    wildfly_apps:
+      - { path: '/opt/edvige.war',
+          download_url: 'https://github.com/ansible-middleware/jug-grenoble/raw/refs/heads/main/edvige.war',
+          root: '/edvige' }
   collections:
     - middleware_automation.wildfly
   roles:
     - pgsql
     - wildfly_install
     - wildfly_systemd
+  pre_tasks:
+    - name: "Ensure apps are downloaded"
+      ansible.builtin.get_url:
+        url: "{{ item.download_url }}"
+        dest: "{{ item.path }}"
+      loop: "{{ wildfly_apps }}"
+
   tasks:
     - name: Install two JDBC drivers with wildfly_driver role
       ansible.builtin.include_role:
