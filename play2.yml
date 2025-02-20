@@ -3,9 +3,19 @@
 - name: "Deploy EDVIGE app and associated databases"
   hosts: wildfly
   vars:
+    wildfly_java_package_name: java-17-openjdk-headless 
+    wildfly_enable_yml_config: true
+    wildfly_yml_configs:
+      - yaml_configuration.yml.j2
+    edvige_ds_name: 'EdvigeDS'
+    edvige_ds_pool_size: 20
+    edvige_ds_pool_min_size: 2
     postgres_driver_version: 9.4.1212
     jdbc_drivers:
-      - { version: "{{ postgres_driver_version }}", name: 'org.postgresql', jar_file: "postgresql-{{ postgres_driver_version }}.jar", url: "https://repo.maven.apache.org/maven2/org/postgresql/postgresql/{{ postgres_driver_version }}/postgresql-{{ postgres_driver_version }}.jar" }
+      - { version: "{{ postgres_driver_version }}", 
+          name: 'org.postgresql', 
+          jar_file: "postgresql-{{ postgres_driver_version }}.jar", 
+          url: "https://repo.maven.apache.org/maven2/org/postgresql/postgresql/{{ postgres_driver_version }}/postgresql-{{ postgres_driver_version }}.jar" }
   collections:
     - middleware_automation.wildfly
   roles:
