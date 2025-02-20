@@ -5,12 +5,17 @@
   collections:
     - middleware_automation.jws
   vars:
-    edvige_home: "{{ jws_home }}/webapps/edvige/"
+    #edvige_home: "{{ jws_home }}/webapps/edvige/"
+    edvige_home: "/opt/apache-tomcat-10.1.13/webapps/edvige"
+    jws_user: tomcat
+    jws_group: tomcat
     jws_systemd_enabled: True
     jws_java_version: 17
     jws_listen_http_port: 8600
-  roles:
-    - jws
+  tasks:
+    - name: "Ensure Apache Tomcat is installed and running"
+      ansible.builtin.include_role:
+        name: middleware_automation.jws.jws
   post_tasks:
 
     - name: "Ensure EDVIGE folder exists on target"
