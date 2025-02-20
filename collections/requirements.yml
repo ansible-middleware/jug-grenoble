@@ -1,6 +1,7 @@
 ---
 collections:
   - community.postgresql
+  - community.general
   - ansible.posix
   - middleware_automation.wildfly
   - middleware_automation.keycloak
