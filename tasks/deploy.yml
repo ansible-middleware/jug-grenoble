@@ -22,4 +22,4 @@
   ansible.builtin.get_url:
     url: "http://localhost:{{ jws_listen_http_port }}/edvige/edvige.txt"
     dest: "/tmp/res-{{ ansible_nodename }}.txt"
-    checksum: md5:2533713501484bb67f29e242441fe71c.
+    checksum: "md5:{{ edvige_checksum }}"
