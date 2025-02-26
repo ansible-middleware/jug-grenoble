@@ -1,6 +1,6 @@
 ---
 # Deploy EDVIGE as a webapp using Postgresql as a datasource
-- name: "Deploy EDVIGE app and associated databases"
+- name: "Deploy EDVIGE cache system"
   hosts: infinispan
   collections:
     - middleware_automation.infinispan
