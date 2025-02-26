@@ -8,4 +8,3 @@
     keycloak_frontend_url: 'http://keycloak:8080/auth/'
   roles:
     - middleware_automation.keycloak.keycloak
-
