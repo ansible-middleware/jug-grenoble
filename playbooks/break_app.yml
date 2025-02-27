@@ -13,7 +13,7 @@
         jboss_cli_query: '/system-property=JBOSS_ID:write-attribute(name="value",value="toto")'
         jboss_cli_changed_when: true
       when:
-        - not display_only is defined
+        - not display_only is defined or not display_only
 
     - name: "Load current value of sysprop JBOSS_ID"
       ansible.builtin.include_role:
