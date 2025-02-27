@@ -1,19 +1,28 @@
 ---
 - name: "Flush JDBC idle connection"
   hosts: wildfly
+  vars:
+    wildfly_install_dir: /opt/wildfly
+    cli_script_name: flush_db.cli
+    path_to_script: "{{ wildfly_install_dir }}/{{ cli_script_name }}"
   collections:
     - middleware_automation.wildfly
   tasks:
-    - ansible.builtin.debug:
+    - name: "Print the content of the event triggering this play"
+      ansible.builtin.debug:
         var: log_entry
+      when:
+        - log_entry is defined and log_entry | length > 0
 
-    - name: Flush idle connection
+    - name: "Deploy CLI script"
+      ansible.builtin.copy:
+        src: "files/{{ cli_script_name }}"
+        dest: "{{ path_to_script }}"
+
+    - name: "TODO"
       ansible.builtin.include_role:
         name: wildfly_utils
         tasks_from: jboss_cli.yml
       vars:
-        jboss_cli_query: "/subsystem=datasources/data-source=ExampleDS:flush-idle-connection-in-pool()"
-
-    - name: Display JBoss CLI query results
-      ansible.builtin.debug:
-        var: cli_result
+        jboss_cli_file: "{{ path_to_script }}"
+        jboss_cli_changed_when: true
