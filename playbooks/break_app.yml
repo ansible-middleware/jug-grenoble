@@ -1,0 +1,27 @@
+---
+- name: "Change or display value of JBOSS_ID sysprop"
+  hosts: wildfly
+  vars:
+  collections:
+    - middleware_automation.wildfly
+  tasks:
+    - name: "Change value of sysprop JBOSS_ID to emulate an issue with the app"
+      ansible.builtin.include_role:
+        name: wildfly_utils
+        tasks_from: jboss_cli.yml
+      vars:
+        jboss_cli_query: '/system-property=JBOSS_ID:write-attribute(name="value",value="toto")'
+        jboss_cli_changed_when: true
+      when:
+        - not display_only is defined
+
+    - name: "Load current value of sysprop JBOSS_ID"
+      ansible.builtin.include_role:
+        name: wildfly_utils
+        tasks_from: jboss_cli.yml
+      vars:
+        jboss_cli_query: '/system-property=JBOSS_ID:read-resource()'
+
+    - name: "Display last CLI results"
+      ansible.builtin.debug:
+        var: cli_result
